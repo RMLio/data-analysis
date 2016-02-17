@@ -1,0 +1,23 @@
+{
+  "name": "key-discovery",
+  "version": "0.0.1",
+  "description": "Key discovery for data",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha --reporter spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@git.mmlab.be:pheyvaer/key-discovery.git"
+  },
+  "author": "Pieter Heyvaert",
+  "dependencies": {
+    "priorityqueuejs": "^1.0.0",
+    "xmldom": "^0.1.22",
+    "xpath": "0.0.21"
+  },
+  "devDependencies": {
+    "chai": "^3.4.1",
+    "mocha": "^2.4.4"
+  }
+}
