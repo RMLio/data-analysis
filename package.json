@@ -12,6 +12,7 @@
   },
   "author": "Pieter Heyvaert",
   "dependencies": {
+    "binary-search-tree": "^0.2.5",
     "priorityqueuejs": "^1.0.0",
     "xmldom": "^0.1.22",
     "xpath": "0.0.21"

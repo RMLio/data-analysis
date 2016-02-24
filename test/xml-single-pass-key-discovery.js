@@ -4,9 +4,9 @@
 
 var assert = require('chai').assert,
   discovery = require('../index'),
-  XMLKeyDiscovery = discovery.XMLKeyDiscovery;
+  XMLKeyDiscovery = discovery.XMLSinglePassKeyDiscovery;
 
-describe('XMLKeyDiscovery', function () {
+describe('XMLSinglePassKeyDiscovery', function () {
   it('#1', function () {
     var xml = '<?xml version="1.0" encoding="UTF-8"?>' +
       '<bookstore>' +
@@ -41,13 +41,16 @@ describe('XMLKeyDiscovery', function () {
 
     var discovery = new XMLKeyDiscovery(xml);
     var result = discovery.discover(nodePath, {logLevel: 'error'});
-    var expectedResult = [['title'],
-      ['id'],
-      ['author'],
-      ['id', 'title'],
-      ['author', 'title'],
-      ['author', 'id'],
-      ['author', 'id', 'title']];
+    var expectedResult =
+      [['title'],
+        ['id'],
+        ['author'],
+        ['id', 'title'],
+        ['author', 'title'],
+        ['author', 'id'],
+        ['author', 'id', 'title']];
+
+    //console.log(result);
 
     assert.deepEqual(result, expectedResult, "correct keys not found");
   });
@@ -117,10 +120,10 @@ describe('XMLKeyDiscovery', function () {
     var result = discovery.discover(nodePath, {logLevel: 'error'});
     var expectedResult = [['title'],
       ['author'],
+      ['title', '@id'],
+      ['author', '@id'],
       ['author', 'title'],
-      ['@id', 'title'],
-      ['@id', 'author'],
-      ['@id', 'author', 'title']];
+      ['author', 'title', '@id']];
 
     //console.log(result);
 
@@ -192,10 +195,10 @@ describe('XMLKeyDiscovery', function () {
     var result = discovery.discover(nodePath, {logLevel: 'error'});
     var expectedResult = [['title'],
       ['author'],
+      ['title', '@id'],
+      ['author', '@id'],
       ['author', 'title'],
-      ['@id', 'title'],
-      ['@id', 'author'],
-      ['@id', 'author', 'title']];
+      ['author', 'title', '@id']];
 
     //console.log(result);
 
@@ -228,7 +231,7 @@ describe('XMLKeyDiscovery', function () {
     var result = discovery.discover(nodePath, {logLevel: 'error'});
     var expectedResult = [['title'],
       ['author'],
-    ['author', 'title']];
+      ['author', 'title']];
 
     //console.log(result);
 
@@ -294,13 +297,13 @@ describe('XMLKeyDiscovery', function () {
     var result = discovery.discover(nodePath, {logLevel: 'error'});
     var expectedResult = [['title'],
       ['author'],
-      ['author', 'title']];
+    ['author', 'title']];
 
-    //console.log(result);
+    console.log(result);
 
     assert.deepEqual(result, expectedResult, "correct keys not found");
   });
-  //
+
   //it('#9', function () {
   //  var xml = '<?xml version="1.0" encoding="UTF-8"?>' +
   //    '<bookstore>' +
@@ -343,7 +346,7 @@ describe('XMLKeyDiscovery', function () {
   //
   //  var nodePath = "/nutrition/food";
   //
-  //  var disco, very = new XMLKeyDiscovery(xml);
+  //  var discovery = new XMLKeyDiscovery(xml);
   //  var result = discovery.discover(nodePath, {logLevel: 'error', multiLevel: false});
   //  var expectedResult = [['name'],
   //    ['mfr'],
