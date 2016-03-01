@@ -6,7 +6,7 @@ var assert = require('chai').assert,
   discovery = require('../index'),
   XMLKeyDiscovery = discovery.XMLKeyDiscovery;
 
-describe('XMLKeyDiscovery', function () {
+describe('XMLKeyDiscovery based on ROCKER', function () {
   it('#1', function () {
     var xml = '<?xml version="1.0" encoding="UTF-8"?>' +
       '<bookstore>' +
@@ -336,7 +336,7 @@ describe('XMLKeyDiscovery', function () {
     assert.deepEqual(result, expectedResult, "correct keys not found");
   });
 
-  it.skip('#12', function () {
+  it.skip('#12 - no multi-level', function () {
     var xml = '  <?xml version="1.0" encoding="UTF-8"?>' +
       '<bookstore>' +
       '<book>' +
