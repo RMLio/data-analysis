@@ -5,9 +5,9 @@
 var assert = require('chai').assert,
   expect = require('chai').expect,
   discovery = require('../index'),
-  XMLKeyDiscovery = discovery.XMLSinglePassKeyDiscovery;
+  XMLKeyDiscovery = discovery.XMLSinglePassKeyDiscoveryBloomFilter;
 
-describe('XMLSinglePassKeyDiscovery', function () {
+describe('XMLSinglePassKeyDiscovery with Bloom Filter', function () {
   it('#1', function () {
     var xml = '<?xml version="1.0" encoding="UTF-8"?>' +
       '<bookstore>' +

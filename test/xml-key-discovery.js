@@ -228,7 +228,7 @@ describe('XMLKeyDiscovery', function () {
     var result = discovery.discover(nodePath, {logLevel: 'error'});
     var expectedResult = [['title'],
       ['author'],
-    ['author', 'title']];
+      ['author', 'title']];
 
     //console.log(result);
 
@@ -300,230 +300,193 @@ describe('XMLKeyDiscovery', function () {
 
     assert.deepEqual(result, expectedResult, "correct keys not found");
   });
-  //
-  //it('#9', function () {
-  //  var xml = '<?xml version="1.0" encoding="UTF-8"?>' +
-  //    '<bookstore>' +
-  //    '<book>' +
-  //    '<title>Everyday Italian</title>' +
-  //    '<author>James McGovern</author>' +
-  //    '<author>James Peterson</author>' +
-  //    '</book>' +
-  //    '<book>' +
-  //    '<title>Everyday Italian2</title>' +
-  //    '<author>Pieter McGovern</author>' +
-  //    '</book>' +
-  //    '<book>' +
-  //    '<title>Harry Potter</title>' +
-  //    '<author>J K. Rowling</author>' +
-  //    '</book>' +
-  //    '<book>' +
-  //    '<title>XQuery Kick Start</title>' +
-  //    '<author>James McGovern</author>' +
-  //    '<author>James Peterson</author>' +
-  //    '</book>' +
-  //    '</bookstore>';
-  //
-  //  var nodePath = "/bookstore/book";
-  //
-  //  var discovery = new XMLKeyDiscovery(xml);
-  //  var result = discovery.discover(nodePath, {logLevel: 'error'});
-  //  var expectedResult = [['title'],
-  //    ['author', 'title']];
-  //
-  //  //console.log(result);
-  //
-  //  assert.deepEqual(result, expectedResult, "correct keys not found");
-  //});
-  //
-  //it('#10', function () {
-  //  var xml = '<?xml version="1.0"?> <?xml-stylesheet type="text/css" href="nutrition.css"?><nutrition><food><name>Avocado Dip</name><mfr>Sunnydale</mfr><serving units="g">29</serving><calories total="110" fat="100"/> <total-fat>11</total-fat> <saturated-fat>3</saturated-fat> <cholesterol>5</cholesterol> <sodium>210</sodium> <carb>2</carb> <fiber>0</fiber> <protein>1</protein></food> <food> <name>Bagels, New York Style </name> <mfr>Thompson</mfr> <serving units="g">104</serving> <calories total="300" fat="35"/> <total-fat>4</total-fat> <saturated-fat>1</saturated-fat> <cholesterol>0</cholesterol> <sodium>510</sodium> <carb>54</carb> <fiber>3</fiber> <protein>11</protein></food> </nutrition>';
-  //  xml = xml.replace(/(\r\n|\n|\r)/gm, "");
-  //  xml = xml.replace(/> *</g, "><");
-  //
-  //  var nodePath = "/nutrition/food";
-  //
-  //  var disco, very = new XMLKeyDiscovery(xml);
-  //  var result = discovery.discover(nodePath, {logLevel: 'error', multiLevel: false});
-  //  var expectedResult = [['name'],
-  //    ['mfr'],
-  //    ['serving'],
-  //    ['total-fat'],
-  //    ['saturated-fat'],
-  //    ['cholesterol'],
-  //    ['sodium'],
-  //    ['carb'],
-  //    ['fiber'],
-  //    ['protein']];
-  //
-  //  //console.log(result);
-  //
-  //  assert.deepEqual(result, expectedResult, "correct keys not found");
-  //});
-  //
-  //it('#11', function () {
-  //  var xml = '<?xml version="1.0"?> <?xml-stylesheet type="text/css" href="nutrition.css"?><nutrition><food><name>Avocado Dip</name><mfr>Sunnydale</mfr><serving units="g">29</serving><calories total="110" fat="100">50</calories><total-fat>11</total-fat> <saturated-fat>3</saturated-fat> <cholesterol>5</cholesterol> <sodium>210</sodium> <carb>2</carb> <fiber>0</fiber> <protein>1</protein></food> <food> <name>Bagels, New York Style </name> <mfr>Thompson</mfr> <serving units="g">104</serving> <calories total="300" fat="35"/> <total-fat>4</total-fat> <saturated-fat>1</saturated-fat> <cholesterol>0</cholesterol> <sodium>510</sodium> <carb>54</carb> <fiber>3</fiber> <protein>11</protein></food> </nutrition>';
-  //  xml = xml.replace(/(\r\n|\n|\r)/gm, "");
-  //  xml = xml.replace(/> *</g, "><");
-  //
-  //  var nodePath = "/nutrition/food";
-  //
-  //  var discovery = new XMLKeyDiscovery(xml);
-  //  var result = discovery.discover(nodePath, {logLevel: 'error',multiLevel: false});
-  //  var expectedResult = [['saturated-fat'],
-  //    ['name'],
-  //    ['serving'],
-  //    ['calories'],
-  //    ['total-fat'],
-  //    ['mfr'],
-  //    ['cholesterol'],
-  //    ['sodium'],
-  //    ['carb'],
-  //    ['fiber'],
-  //    ['protein']];
-  //
-  //  //console.log(result);
-  //
-  //  assert.deepEqual(result, expectedResult, "correct keys not found");
-  //});
-  //
-  //it('#12', function () {
-  //  var xml = '<?xml version="1.0"?> <?xml-stylesheet type="text/css" href="nutrition.css"?><nutrition><food><name>Avocado Dip</name><mfr>Sunnydale</mfr><serving units="g">29</serving><calories total="110" fat="100">50</calories><total-fat>11</total-fat> <saturated-fat>3</saturated-fat> <cholesterol>5</cholesterol> <sodium>210</sodium> <carb>2</carb> <fiber>0</fiber> <protein>1</protein></food> <food> <name>Bagels, New York Style </name> <mfr>Thompson</mfr> <serving units="g">104</serving> <calories total="300" fat="35"/> <total-fat>4</total-fat> <saturated-fat>1</saturated-fat> <cholesterol>0</cholesterol> <sodium>510</sodium> <carb>54</carb> <fiber>3</fiber> <protein>11</protein></food> </nutrition>';
-  //  xml = xml.replace(/(\r\n|\n|\r)/gm, "");
-  //  xml = xml.replace(/> *</g, "><");
-  //
-  //  var nodePath = "/nutrition/food";
-  //
-  //  var discovery = new XMLKeyDiscovery(xml);
-  //  var result = discovery.discover(nodePath, {logLevel: 'error',multiLevel: true});
-  //  var expectedResult = [['total-fat'],
-  //    ['name'],
-  //    ['fiber'],
-  //    ['serving'],
-  //    ['calories/@total'],
-  //    ['calories/@fat'],
-  //    ['calories'],
-  //    ['mfr'],
-  //    ['saturated-fat'],
-  //    ['cholesterol'],
-  //    ['sodium'],
-  //    ['carb'],
-  //    ['protein'],
-  //    ['serving/@units', 'total-fat'],
-  //    ['serving/@units', 'name'],
-  //    ['serving/@units', 'fiber'],
-  //    ['serving/@units', 'serving'],
-  //    ['serving/@units', 'calories/@total'],
-  //    ['serving/@units', 'calories/@fat'],
-  //    ['serving/@units', 'calories'],
-  //    ['serving/@units', 'mfr'],
-  //    ['serving/@units', 'saturated-fat'],
-  //    ['serving/@units', 'cholesterol'],
-  //    ['serving/@units', 'sodium'],
-  //    ['serving/@units', 'carb'],
-  //    ['serving/@units', 'protein']];
-  //
-  //  //console.log(result);
-  //
-  //  assert.deepEqual(result, expectedResult, "correct keys not found");
-  //});
-  //
-  //it('#13', function () {
-  //  var xml = '  <?xml version="1.0" encoding="UTF-8"?>' +
-  //    '<bookstore>' +
-  //    '<book>' +
-  //    '<title>Everyday Italian</title>' +
-  //    '<author>James McGovern</author>' +
-  //    '<author>James Peterson</author>' +
-  //    '<details>' +
-  //    '<id>0</id>' +
-  //    '</details>' +
-  //    '</book>' +
-  //    '<book>' +
-  //    '<title>Everyday Italian2</title>' +
-  //    '<author>Pieter McGovern</author>' +
-  //    '<details>' +
-  //    '<id>1</id>' +
-  //    '</details>' +
-  //    '</book>' +
-  //    '<book>' +
-  //    '<title>Harry Potter</title>' +
-  //    '<author>J K. Rowling</author>' +
-  //    '<details>' +
-  //    '<id>2</id>' +
-  //    '</details>' +
-  //    '</book>' +
-  //    '<book>' +
-  //    '<title>XQuery Kick Start</title>' +
-  //    '<author>James McGovern</author>' +
-  //    '<details>' +
-  //    '<id>3</id>' +
-  //    '</details>' +
-  //    '</book>' +
-  //    '</bookstore>';
-  //
-  //  xml = xml.replace(/(\r\n|\n|\r)/gm, "");
-  //  xml = xml.replace(/> *</g, "><");
-  //
-  //  var nodePath = "/bookstore/book";
-  //
-  //  var discovery = new XMLKeyDiscovery(xml);
-  //  var result = discovery.discover(nodePath, {logLevel: 'error',multiLevel: true});
-  //  var expectedResult = [['title'], ['author'], ['details/id']];
-  //
-  //  //console.log(result);
-  //
-  //  assert.deepEqual(result, expectedResult, "correct keys not found");
-  //});
-  //
-  //it('#14', function () {
-  //  var xml = '  <?xml version="1.0" encoding="UTF-8"?>' +
-  //    '<bookstore>' +
-  //    '<book>' +
-  //    '<title>Everyday Italian</title>' +
-  //    '<author>James McGovern</author>' +
-  //    '<details>' +
-  //    '<id>0</id>' +
-  //    '</details>' +
-  //    '</book>' +
-  //    '<book>' +
-  //    '<title>Everyday Italian2</title>' +
-  //    '<author>Pieter McGovern</author>' +
-  //    '<details>' +
-  //    '<id>1</id>' +
-  //    '</details>' +
-  //    '</book>' +
-  //    '<book>' +
-  //    '<title>Harry Potter</title>' +
-  //    '<author>J K. Rowling</author>' +
-  //    '<details>' +
-  //    '<id>2</id>' +
-  //    '</details>' +
-  //    '</book>' +
-  //    '<book>' +
-  //    '<title>XQuery Kick Start</title>' +
-  //    '<author>James McGovern</author>' +
-  //    '<details>' +
-  //    '<id>3</id>' +
-  //    '</details>' +
-  //    '</book>' +
-  //    '</bookstore>';
-  //
-  //  xml = xml.replace(/(\r\n|\n|\r)/gm, "");
-  //  xml = xml.replace(/> *</g, "><");
-  //
-  //  var nodePath = "/bookstore/book";
-  //
-  //  var discovery = new XMLKeyDiscovery(xml);
-  //  var result = discovery.discover(nodePath, {logLevel: 'error', multiLevel: true});
-  //  var expectedResult = [['title'],
-  //    ['details/id'],
-  //    ['author', 'title'],
-  //    ['author', 'details/id']];
-  //
-  //
-  //  //console.log(result);
-  //
-  //  assert.deepEqual(result, expectedResult, "correct keys not found");
-  //});
+
+  it('#9', function () {
+    var xml = '<?xml version="1.0" encoding="UTF-8"?>' +
+      '<bookstore>' +
+      '<book>' +
+      '<title>Everyday Italian</title>' +
+      '<author>James McGovern</author>' +
+      '<author>James Peterson</author>' +
+      '</book>' +
+      '<book>' +
+      '<title>Everyday Italian2</title>' +
+      '<author>Pieter McGovern</author>' +
+      '</book>' +
+      '<book>' +
+      '<title>Harry Potter</title>' +
+      '<author>J K. Rowling</author>' +
+      '</book>' +
+      '<book>' +
+      '<title>XQuery Kick Start</title>' +
+      '<author>James McGovern</author>' +
+      '<author>James Peterson</author>' +
+      '</book>' +
+      '</bookstore>';
+
+    var nodePath = "/bookstore/book";
+
+    var discovery = new XMLKeyDiscovery(xml);
+    var result = discovery.discover(nodePath, {logLevel: 'error'});
+    var expectedResult = [['title'],
+      ['author', 'title']];
+
+    //console.log(result);
+
+    assert.deepEqual(result, expectedResult, "correct keys not found");
+  });
+
+  it.skip('#12', function () {
+    var xml = '  <?xml version="1.0" encoding="UTF-8"?>' +
+      '<bookstore>' +
+      '<book>' +
+      '<title>Everyday Italian</title>' +
+      '<author>James McGovern</author>' +
+      '<author>James Peterson</author>' +
+      '<details>' +
+      '<id>0</id>' +
+      '</details>' +
+      '</book>' +
+      '<book>' +
+      '<title>Everyday Italian2</title>' +
+      '<author>Pieter McGovern</author>' +
+      '<details>' +
+      '<id>1</id>' +
+      '</details>' +
+      '</book>' +
+      '<book>' +
+      '<title>Harry Potter</title>' +
+      '<author>J K. Rowling</author>' +
+      '<details>' +
+      '<id>2</id>' +
+      '</details>' +
+      '</book>' +
+      '<book>' +
+      '<title>XQuery Kick Start</title>' +
+      '<author>James McGovern</author>' +
+      '<details>' +
+      '<id>3</id>' +
+      '</details>' +
+      '</book>' +
+      '</bookstore>';
+
+    xml = xml.replace(/(\r\n|\n|\r)/gm, "");
+    xml = xml.replace(/> *</g, "><");
+
+    var nodePath = "/bookstore/book";
+
+    var discovery = new XMLKeyDiscovery(xml);
+    var result = discovery.discover(nodePath, {logLevel: 'error', multiLevel: false});
+    var expectedResult = [['title'],
+      ['author'],
+      ['author', 'title']];
+    //console.log(result);
+
+    assert.deepEqual(result, expectedResult, "correct keys not found");
+  });
+
+  it('#13', function () {
+    var xml = '  <?xml version="1.0" encoding="UTF-8"?>' +
+      '<bookstore>' +
+      '<book>' +
+      '<title>Everyday Italian</title>' +
+      '<author>James McGovern</author>' +
+      '<author>James Peterson</author>' +
+      '<details>' +
+      '<id>0</id>' +
+      '</details>' +
+      '</book>' +
+      '<book>' +
+      '<title>Everyday Italian2</title>' +
+      '<author>Pieter McGovern</author>' +
+      '<details>' +
+      '<id>1</id>' +
+      '</details>' +
+      '</book>' +
+      '<book>' +
+      '<title>Harry Potter</title>' +
+      '<author>J K. Rowling</author>' +
+      '<details>' +
+      '<id>2</id>' +
+      '</details>' +
+      '</book>' +
+      '<book>' +
+      '<title>XQuery Kick Start</title>' +
+      '<author>James McGovern</author>' +
+      '<details>' +
+      '<id>3</id>' +
+      '</details>' +
+      '</book>' +
+      '</bookstore>';
+
+    xml = xml.replace(/(\r\n|\n|\r)/gm, "");
+    xml = xml.replace(/> *</g, "><");
+
+    var nodePath = "/bookstore/book";
+
+    var discovery = new XMLKeyDiscovery(xml);
+    var result = discovery.discover(nodePath, {logLevel: 'error', multiLevel: true});
+    var expectedResult = [['title'],
+      ['author'],
+      ['details/id'],
+      ['author', 'title'],
+      ['details/id', 'title'],
+      ['details/id', 'author'],
+      ['details/id', 'author', 'title']];
+    //console.log(result);
+
+    assert.deepEqual(result, expectedResult, "correct keys not found");
+  });
+
+  it('#14', function () {
+    var xml = '  <?xml version="1.0" encoding="UTF-8"?>' +
+      '<bookstore>' +
+      '<book>' +
+      '<title>Everyday Italian</title>' +
+      '<author>James McGovern</author>' +
+      '<details>' +
+      '<id>0</id>' +
+      '</details>' +
+      '</book>' +
+      '<book>' +
+      '<title>Everyday Italian2</title>' +
+      '<author>Pieter McGovern</author>' +
+      '<details>' +
+      '<id>1</id>' +
+      '</details>' +
+      '</book>' +
+      '<book>' +
+      '<title>Harry Potter</title>' +
+      '<author>J K. Rowling</author>' +
+      '<details>' +
+      '<id>2</id>' +
+      '</details>' +
+      '</book>' +
+      '<book>' +
+      '<title>XQuery Kick Start</title>' +
+      '<author>James McGovern</author>' +
+      '<details>' +
+      '<id>3</id>' +
+      '</details>' +
+      '</book>' +
+      '</bookstore>';
+
+    xml = xml.replace(/(\r\n|\n|\r)/gm, "");
+    xml = xml.replace(/> *</g, "><");
+
+    var nodePath = "/bookstore/book";
+
+    var discovery = new XMLKeyDiscovery(xml);
+    var result = discovery.discover(nodePath, {logLevel: 'error', multiLevel: true});
+    var expectedResult = [['title'],
+      ['details/id'],
+      ['details/id', 'title'],
+      ['author', 'title'],
+      ['author', 'details/id'],
+      ['author', 'details/id', 'title']];
+
+    //console.log(result);
+
+    assert.deepEqual(result, expectedResult, "correct keys not found");
+  });
 });
