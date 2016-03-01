@@ -6,6 +6,8 @@ var assert = require('chai').assert,
   expect = require('chai').expect,
   discovery = require('../index'),
   XMLKeyDiscovery = discovery.XMLSinglePassKeyDiscoveryBloomFilterExtraArray;
+var bits = 32 * 128;
+var hash = 4;
 
 describe('XMLSinglePassKeyDiscovery with Bloom Filter and Extra Array', function () {
   it('#1', function () {
@@ -40,7 +42,7 @@ describe('XMLSinglePassKeyDiscovery with Bloom Filter and Extra Array', function
 
     var nodePath = "/bookstore/book";
 
-    var discovery = new XMLKeyDiscovery(xml);
+    var discovery = new XMLKeyDiscovery(xml, bits, hash);
     var result = discovery.discover(nodePath, {logLevel: 'error'});
     var expectedResult =
       [['title'],
@@ -79,7 +81,7 @@ describe('XMLSinglePassKeyDiscovery with Bloom Filter and Extra Array', function
 
     var nodePath = "/bookstore/book";
 
-    var discovery = new XMLKeyDiscovery(xml);
+    var discovery = new XMLKeyDiscovery(xml, bits, hash);
     var result = discovery.discover(nodePath, {logLevel: 'error'});
     var expectedResult = [['@id'],
       ['title'],
@@ -117,7 +119,7 @@ describe('XMLSinglePassKeyDiscovery with Bloom Filter and Extra Array', function
 
     var nodePath = "/bookstore/book";
 
-    var discovery = new XMLKeyDiscovery(xml);
+    var discovery = new XMLKeyDiscovery(xml, bits, hash);
     var result = discovery.discover(nodePath, {logLevel: 'error'});
     var expectedResult = [['title'],
       ['author'],
@@ -154,7 +156,7 @@ describe('XMLSinglePassKeyDiscovery with Bloom Filter and Extra Array', function
 
     var nodePath = "/bookstore/book";
 
-    var discovery = new XMLKeyDiscovery(xml);
+    var discovery = new XMLKeyDiscovery(xml, bits, hash);
     var result = discovery.discover(nodePath, {logLevel: 'error'});
     var expectedResult = [['@id'],
       ['title'],
@@ -192,7 +194,7 @@ describe('XMLSinglePassKeyDiscovery with Bloom Filter and Extra Array', function
 
     var nodePath = "/bookstore/book";
 
-    var discovery = new XMLKeyDiscovery(xml);
+    var discovery = new XMLKeyDiscovery(xml, bits, hash);
     var result = discovery.discover(nodePath, {logLevel: 'error'});
     var expectedResult = [['title'],
       ['author'],
@@ -228,7 +230,7 @@ describe('XMLSinglePassKeyDiscovery with Bloom Filter and Extra Array', function
 
     var nodePath = "/bookstore/book";
 
-    var discovery = new XMLKeyDiscovery(xml);
+    var discovery = new XMLKeyDiscovery(xml, bits, hash);
     var result = discovery.discover(nodePath, {logLevel: 'error'});
     var expectedResult = [['title'],
       ['author'],
@@ -260,7 +262,7 @@ describe('XMLSinglePassKeyDiscovery with Bloom Filter and Extra Array', function
 
     var nodePath = "/bookstore/book";
 
-    var discovery = new XMLKeyDiscovery(xml);
+    var discovery = new XMLKeyDiscovery(xml, bits, hash);
     var result = discovery.discover(nodePath, {logLevel: 'error'});
     var expectedResult = [['title'],
       ['author', 'title']];
@@ -294,7 +296,7 @@ describe('XMLSinglePassKeyDiscovery with Bloom Filter and Extra Array', function
 
     var nodePath = "/bookstore/book";
 
-    var discovery = new XMLKeyDiscovery(xml);
+    var discovery = new XMLKeyDiscovery(xml, bits, hash);
     var result = discovery.discover(nodePath, {logLevel: 'error'});
     var expectedResult = [['title'],
       ['author'],
@@ -330,7 +332,7 @@ describe('XMLSinglePassKeyDiscovery with Bloom Filter and Extra Array', function
 
     var nodePath = "/bookstore/book";
 
-    var discovery = new XMLKeyDiscovery(xml);
+    var discovery = new XMLKeyDiscovery(xml, bits, hash);
     var result = discovery.discover(nodePath, {logLevel: 'error'});
     var expectedResult = [['title'],
       ['author', 'title']];
@@ -347,7 +349,7 @@ describe('XMLSinglePassKeyDiscovery with Bloom Filter and Extra Array', function
   //
   //  var nodePath = "/nutrition/food";
   //
-  //  var discovery = new XMLKeyDiscovery(xml);
+  //  var discovery = new XMLKeyDiscovery(xml, bits, hash);
   //  var result = discovery.discover(nodePath, {logLevel: 'error', multiLevel: false});
   //  var expectedResult;
   //
@@ -365,7 +367,7 @@ describe('XMLSinglePassKeyDiscovery with Bloom Filter and Extra Array', function
   //
   //  var nodePath = "/nutrition/food";
   //
-  //  var discovery = new XMLKeyDiscovery(xml);
+  //  var discovery = new XMLKeyDiscovery(xml, bits, hash);
   //  var result = discovery.discover(nodePath, {logLevel: 'error',multiLevel: false});
   //  var expectedResult = [['saturated-fat'],
   //    ['name'],
@@ -391,7 +393,7 @@ describe('XMLSinglePassKeyDiscovery with Bloom Filter and Extra Array', function
   //
   //  var nodePath = "/nutrition/food";
   //
-  //  var discovery = new XMLKeyDiscovery(xml);
+  //  var discovery = new XMLKeyDiscovery(xml, bits, hash);
   //  var result = discovery.discover(nodePath, {logLevel: 'error',multiLevel: true});
   //  var expectedResult = [['total-fat'],
   //    ['name'],
@@ -464,7 +466,7 @@ describe('XMLSinglePassKeyDiscovery with Bloom Filter and Extra Array', function
 
     var nodePath = "/bookstore/book";
 
-    var discovery = new XMLKeyDiscovery(xml);
+    var discovery = new XMLKeyDiscovery(xml, bits, hash);
     var result = discovery.discover(nodePath, {logLevel: 'error',multiLevel: true});
     var expectedResult = [ [ 'title' ],
       [ 'author' ],
@@ -529,7 +531,7 @@ describe('XMLSinglePassKeyDiscovery with Bloom Filter and Extra Array', function
 
     var nodePath = "/bookstore/book";
 
-    var discovery = new XMLKeyDiscovery(xml);
+    var discovery = new XMLKeyDiscovery(xml, bits, hash);
     var result = discovery.discover(nodePath, {logLevel: 'error', multiLevel: true});
     var expectedResult = [['title'],
       ['details/id'],
