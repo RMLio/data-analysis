@@ -12,7 +12,7 @@
   },
   "author": "Pieter Heyvaert",
   "dependencies": {
-    "binary-search-tree": "file:../node-binary-search-tree",
+    "binary-search-tree": "git+ssh://git@git.mmlab.be:pheyvaer/node-binary-search-tree",
     "bloomfilter": "0.0.16",
     "priorityqueuejs": "^1.0.0",
     "sorted-array": "^2.0.1",
