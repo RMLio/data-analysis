@@ -639,11 +639,6 @@ describe('XMLSinglePassKeyDiscovery with Unsorted Array', function () {
 
       var discovery = new XMLKeyDiscovery(xml);
       var result = discovery.discover(nodePath, {logLevel: 'error', extendedOutput: true});
-      var expectedResult = {
-        author: {types: {'0': 0, '1': 5, '3': 0, '4': 0, '6': 0}},
-        id: {types: {'0': 0, '1': 0, '3': 0, '4': 0, '6': 5}},
-        title: {types: {'0': 0, '1': 5, '3': 0, '4': 0, '6': 0}}
-      };
 
       //console.log(result.analysis);
 
@@ -657,6 +652,247 @@ describe('XMLSinglePassKeyDiscovery with Unsorted Array', function () {
       assert.equal(result.analysis.id.min, 1, "min is not correct");
       assert.equal(result.analysis.id.average, 2, "average is not correct");
 
+    });
+  });
+
+  describe('structure', function () {
+    it('#1', function () {
+      var xml = '<?xml version="1.0" encoding="UTF-8"?>' +
+        '<bookstore>' +
+        '<book>' +
+        '<title>Everyday Italian</title>' +
+        '<id>0</id>' +
+        '<author>Giada De Laurentiis</author>' +
+        '</book>' +
+        '<book>' +
+        '<title>Everyday Italian2</title>' +
+        '<id>1</id>' +
+        '<author>Giada</author>' +
+        '</book>' +
+        '<book>' +
+        '<title>Harry Potter</title>' +
+        '<id>2</id>' +
+        '<author>J K. Rowling</author>' +
+        '</book>' +
+        '<book>' +
+        '<title>XQuery Kick Start</title>' +
+        '<id>3</id>' +
+        '<author>James McGovern</author>' +
+        '</book>' +
+        '<book>' +
+        '<title>Learning XML</title>' +
+        '<id>4</id>' +
+        '<author>Erik T. Ray</author>' +
+        '</book>' +
+        '</bookstore>';
+
+      var nodePath = "/bookstore/book";
+
+      var discovery = new XMLKeyDiscovery(xml);
+      var result = discovery.discover(nodePath, {logLevel: 'error', extendedOutput: true});
+      var expectedResult = {
+        attributes: [],
+        children: [{path: 'author', children: [], attributes: []},
+          {path: 'id', children: [], attributes: []},
+          {path: 'title', children: [], attributes: []}]
+      };
+
+      //console.log(result.structure);
+
+      assert.deepEqual(result.structure, expectedResult, "structure is not correct");
+
+    });
+
+    it('#2', function () {
+      var xml = '<?xml version="1.0" encoding="UTF-8"?>' +
+        '<bookstore>' +
+        '<book>' +
+        '<title>Everyday Italian</title>' +
+        '<id>0</id>' +
+        '<author>Giada De Laurentiis</author>' +
+        '</book>' +
+        '<book>' +
+        '<title>Everyday Italian2</title>' +
+        '<id>1</id>' +
+        '<author>Giada</author>' +
+        '</book>' +
+        '<book id="9">' +
+        '<title>Harry Potter</title>' +
+        '<id>2</id>' +
+        '<author>J K. Rowling</author>' +
+        '</book>' +
+        '<book>' +
+        '<title>XQuery Kick Start</title>' +
+        '<id>3</id>' +
+        '<author>James McGovern</author>' +
+        '</book>' +
+        '<book>' +
+        '<title>Learning XML</title>' +
+        '<id>4</id>' +
+        '<author>Erik T. Ray</author>' +
+        '</book>' +
+        '</bookstore>';
+
+      var nodePath = "/bookstore/book";
+
+      var discovery = new XMLKeyDiscovery(xml);
+      var result = discovery.discover(nodePath, {logLevel: 'error', extendedOutput: true});
+      var expectedResult = {
+        attributes: ['id'],
+        children: [{path: 'author', children: [], attributes: []},
+          {path: 'id', children: [], attributes: []},
+          {path: 'title', children: [], attributes: []}]
+      };
+
+      //console.log(result.structure);
+
+      assert.deepEqual(result.structure, expectedResult, "structure is not correct");
+
+    });
+
+    it('#3', function () {
+      var xml = '<?xml version="1.0" encoding="UTF-8"?>' +
+        '<bookstore>' +
+        '<book>' +
+        '<title>Everyday Italian</title>' +
+        '<id>0</id>' +
+        '<author>Giada De Laurentiis</author>' +
+        '</book>' +
+        '<book>' +
+        '<title>Everyday Italian2</title>' +
+        '<id>1</id>' +
+        '<author>Giada</author>' +
+        '</book>' +
+        '<book id="9">' +
+        '<title>Harry Potter</title>' +
+        '<id>2</id>' +
+        '<author>J K. Rowling</author>' +
+          '<details>' +
+          'test' +
+          '</details>' +
+        '</book>' +
+        '<book>' +
+        '<title>XQuery Kick Start</title>' +
+        '<id>3</id>' +
+        '<author>James McGovern</author>' +
+        '</book>' +
+        '<book>' +
+        '<title>Learning XML</title>' +
+        '<id>4</id>' +
+        '<author>Erik T. Ray</author>' +
+        '</book>' +
+        '</bookstore>';
+
+      var nodePath = "/bookstore/book";
+
+      var discovery = new XMLKeyDiscovery(xml);
+      var result = discovery.discover(nodePath, {logLevel: 'error', extendedOutput: true});
+      var expectedResult = {
+        attributes: ['id'],
+        children: [{path: 'author', children: [], attributes: []},
+          {path: 'details', children: [], attributes: []},
+          {path: 'id', children: [], attributes: []},
+          {path: 'title', children: [], attributes: []}]
+      };
+
+      //console.log(result.structure);
+
+      assert.deepEqual(result.structure, expectedResult, "structure is not correct");
+
+    });
+
+    it('#4', function () {
+      var xml = '<?xml version="1.0" encoding="UTF-8"?>' +
+        '<bookstore>' +
+        '<book>' +
+        '<title>Everyday Italian</title>' +
+        '<id>0</id>' +
+        '<author>Giada De Laurentiis</author>' +
+        '</book>' +
+        '<book>' +
+        '<title>Everyday Italian2</title>' +
+        '<id>1</id>' +
+        '<author>Giada</author>' +
+        '</book>' +
+        '<book id="9">' +
+        '<title>Harry Potter</title>' +
+        '<id>2</id>' +
+        '<author>J K. Rowling</author>' +
+        '<details>' +
+        '<det1>' +
+        'blabla' +
+        '</det1>' +
+        '</details>' +
+        '</book>' +
+        '<book>' +
+        '<title>XQuery Kick Start</title>' +
+        '<id>3</id>' +
+        '<author>James McGovern</author>' +
+        '</book>' +
+        '<book>' +
+        '<title>Learning XML</title>' +
+        '<id>4</id>' +
+        '<author>Erik T. Ray</author>' +
+        '</book>' +
+        '</bookstore>';
+
+      var nodePath = "/bookstore/book";
+
+      var discovery = new XMLKeyDiscovery(xml);
+      var result = discovery.discover(nodePath, {logLevel: 'error', extendedOutput: true});
+      var expectedResult = {
+        attributes: ['id'],
+        children: [{path: 'author', children: [], attributes: []},
+          {path: 'details', children: [{"attributes": [], "children": [], "path": "det1"}], attributes: []},
+          {path: 'id', children: [], attributes: []},
+          {path: 'title', children: [], attributes: []}]
+      };
+
+      //console.log(result.structure);
+
+      assert.deepEqual(result.structure, expectedResult, "structure is not correct");
+    });
+
+    it('#5', function () {
+      var xml = '<?xml version="1.0" encoding="UTF-8"?>' +
+        '<bookstore>' +
+        '<book>' +
+        '<title>Everyday Italian</title>' +
+        '<id>0</id>' +
+        '<author>Giada De Laurentiis</author>' +
+        '</book>' +
+        '<book>' +
+        '<title>Everyday Italian2</title>' +
+        '<id>1</id>' +
+        '<author>Giada</author>' +
+        '</book>' +
+        '<book id="9">' +
+        '<title>Harry Potter</title>' +
+        '<id>2</id>' +
+        '<author>J K. Rowling</author>' +
+        '<details>' +
+        '<det1 my="t">' +
+        'blabla' +
+        '</det1>' +
+        '</details>' +
+        '</book>' +
+        '</bookstore>';
+
+      var nodePath = "/bookstore/book";
+
+      var discovery = new XMLKeyDiscovery(xml);
+      var result = discovery.discover(nodePath, {logLevel: 'error', extendedOutput: true});
+      var expectedResult = {
+        attributes: ['id'],
+        children: [{path: 'author', children: [], attributes: []},
+          {path: 'details', children: [{"attributes": ['my'], "children": [], "path": "det1"}], attributes: []},
+          {path: 'id', children: [], attributes: []},
+          {path: 'title', children: [], attributes: []}]
+      };
+
+      //console.log(result.structure.children[1].children);
+
+      assert.deepEqual(result.structure, expectedResult, "structure is not correct");
     });
   });
 });
