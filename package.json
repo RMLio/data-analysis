@@ -16,6 +16,7 @@
     "bloomfilter": "0.0.16",
     "priorityqueuejs": "^1.0.0",
     "sorted-array": "^2.0.1",
+    "validator": "^5.1.0",
     "winston": "^2.2.0",
     "xmldom": "^0.1.22",
     "xpath": "0.0.21"
