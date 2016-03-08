@@ -10,10 +10,10 @@ var xkd5 = require('./lib/xml-single-pass-key-discovery-bloomfilter-extra-array'
 var xkd6 = require('./lib/xml-single-pass-key-discovery-unsorted-array-with-bloomfilter');
 
 module.exports = {
-  XMLKeyDiscovery: xkd.XMLKeyDiscovery,
-  XMLSinglePassKeyDiscovery: xkd2.XMLSinglePassKeyDiscovery,
-  XMLSinglePassKeyDiscoverySortedArray: xkd3.XMLSinglePassKeyDiscoverySortedArray,
-  XMLSinglePassKeyDiscoveryBloomFilter: xkd4.XMLSinglePassKeyDiscoveryBloomFilter,
-  XMLSinglePassKeyDiscoveryBloomFilterExtraArray: xkd5.XMLSinglePassKeyDiscoveryBloomFilterExtraArray,
-  XMLSinglePassKeyDiscoveryUnsortedArrayWithBloomFilter: xkd6.XMLSinglePassKeyDiscovery
+  XMLKeyDiscovery: xkd,
+  XMLSinglePassKeyDiscovery: xkd2,
+  XMLSinglePassKeyDiscoverySortedArray: xkd3,
+  XMLSinglePassKeyDiscoveryBloomFilter: xkd4,
+  XMLSinglePassKeyDiscoveryBloomFilterExtraArray: xkd5,
+  XMLSinglePassKeyDiscoveryUnsortedArrayWithBloomFilter: xkd6
 };
