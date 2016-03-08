@@ -3,7 +3,7 @@
  */
 
 var xkd = require('./lib/xml-key-discovery');
-var xkd2 = require('./lib/xml-single-pass-key-discovery');
+var xkd2 = require('./lib/xml-single-pass-key-discovery-unsorted-array');
 var xkd3 = require('./lib/xml-single-pass-key-discovery-sorted-array');
 var xkd4 = require('./lib/xml-single-pass-key-discovery-bloomfilter');
 var xkd5 = require('./lib/xml-single-pass-key-discovery-bloomfilter-extra-array');
