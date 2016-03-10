@@ -649,7 +649,7 @@ describe('XMLSinglePassKeyDiscovery with Unsorted Array', function () {
       assert.equal(result.analysis.title.min, undefined, "min should not be defined");
       assert.equal(result.analysis.title.average, undefined, "average should not be defined");
       assert.equal(result.analysis.id.max, 4, "max is not correct");
-      assert.equal(result.analysis.id.min, 1, "min is not correct");
+      assert.equal(result.analysis.id.min, 0, "min is not correct");
       assert.equal(result.analysis.id.average, 2, "average is not correct");
     });
   });
@@ -696,8 +696,8 @@ describe('XMLSinglePassKeyDiscovery with Unsorted Array', function () {
       assert.equal(result.analysis.author.skewness, undefined, "skewness should not be defined");
       assert.equal(result.analysis.title.kurtosis, undefined, "kurtosis should not be defined");
       assert.equal(result.analysis.title.skewness, undefined, "skewness should not be defined");
-      assert.equal(result.analysis.id.kurtosis,-0.6977851844590401, "kurtosis is not correct");
-      assert.equal(result.analysis.id.skewness, 1.1116133319327495, "skewness is not correct");
+      assert.equal(result.analysis.id.kurtosis, 0.13641827999069012, "kurtosis is not correct");
+      assert.equal(result.analysis.id.skewness, 1.4141377945955569, "skewness is not correct");
     });
   });
 
