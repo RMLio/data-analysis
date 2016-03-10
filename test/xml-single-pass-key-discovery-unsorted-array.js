@@ -651,7 +651,100 @@ describe('XMLSinglePassKeyDiscovery with Unsorted Array', function () {
       assert.equal(result.analysis.id.max, 4, "max is not correct");
       assert.equal(result.analysis.id.min, 1, "min is not correct");
       assert.equal(result.analysis.id.average, 2, "average is not correct");
+    });
+  });
 
+  describe('skewness, kurtosis', function () {
+    it('#1', function () {
+      var xml = '<?xml version="1.0" encoding="UTF-8"?>' +
+        '<bookstore>' +
+        '<book>' +
+        '<title>Everyday Italian</title>' +
+        '<id>0</id>' +
+        '<author>Giada De Laurentiis</author>' +
+        '</book>' +
+        '<book>' +
+        '<title>Everyday Italian2</title>' +
+        '<id>1</id>' +
+        '<author>Giada</author>' +
+        '</book>' +
+        '<book>' +
+        '<title>Harry Potter</title>' +
+        '<id>25</id>' +
+        '<author>J K. Rowling</author>' +
+        '</book>' +
+        '<book>' +
+        '<title>XQuery Kick Start</title>' +
+        '<id>3</id>' +
+        '<author>James McGovern</author>' +
+        '</book>' +
+        '<book>' +
+        '<title>Learning XML</title>' +
+        '<id>4</id>' +
+        '<author>Erik T. Ray</author>' +
+        '</book>' +
+        '</bookstore>';
+
+      var nodePath = "/bookstore/book";
+
+      var discovery = new XMLKeyDiscovery(xml);
+      var result = discovery.discover(nodePath, {logLevel: 'error', extendedOutput: true});
+
+      //console.log(result.analysis);
+
+      assert.equal(result.analysis.author.kurtosis, undefined, "kurtosis should not be defined");
+      assert.equal(result.analysis.author.skewness, undefined, "skewness should not be defined");
+      assert.equal(result.analysis.title.kurtosis, undefined, "kurtosis should not be defined");
+      assert.equal(result.analysis.title.skewness, undefined, "skewness should not be defined");
+      assert.equal(result.analysis.id.kurtosis,-0.6977851844590401, "kurtosis is not correct");
+      assert.equal(result.analysis.id.skewness, 1.1116133319327495, "skewness is not correct");
+    });
+  });
+
+  describe('average words, characters', function () {
+    it('#1', function () {
+      var xml = '<?xml version="1.0" encoding="UTF-8"?>' +
+        '<bookstore>' +
+        '<book>' +
+        '<title>Everyday Italian</title>' +
+        '<id>0</id>' +
+        '<author>Giada De Laurentiis</author>' +
+        '</book>' +
+        '<book>' +
+        '<title>Everyday Italian2</title>' +
+        '<id>1</id>' +
+        '<author>Giada</author>' +
+        '</book>' +
+        '<book>' +
+        '<title>Harry Potter</title>' +
+        '<id>25</id>' +
+        '<author>J K. Rowling</author>' +
+        '</book>' +
+        '<book>' +
+        '<title>XQuery Kick Start</title>' +
+        '<id>3</id>' +
+        '<author>James McGovern</author>' +
+        '</book>' +
+        '<book>' +
+        '<title>Learning XML</title>' +
+        '<id>4</id>' +
+        '<author>Erik T. Ray</author>' +
+        '</book>' +
+        '</bookstore>';
+
+      var nodePath = "/bookstore/book";
+
+      var discovery = new XMLKeyDiscovery(xml);
+      var result = discovery.discover(nodePath, {logLevel: 'error', extendedOutput: true});
+
+      //console.log(result.analysis);
+
+      assert.equal(result.analysis.id.averageWords, undefined, "averageWords should not be defined");
+      assert.equal(result.analysis.id.averageCharacters, undefined, "averageCharacters should not be defined");
+      assert.equal(result.analysis.author.averageWords, 2.4, "averageWords is not correct");
+      assert.equal(result.analysis.author.averageCharacters, 5.083333333333333, "averageCharacters is not correct");
+      assert.equal(result.analysis.title.averageWords,2.2, "averageWords is not correct");
+      assert.equal(result.analysis.title.averageCharacters, 6.7272727272727275, "averageCharacters is not correct");
     });
   });
 
