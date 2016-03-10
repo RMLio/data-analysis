@@ -526,7 +526,7 @@ describe('XMLKeyDiscovery based on ROCKER', function () {
       var discovery = new XMLKeyDiscovery(xml);
       var result = discovery.discover(nodePath, {logLevel: 'error', extendedOutput: true});
 
-      //console.log(result.analysis);
+      console.log(result.analysis);
 
       assert.equal(result.analysis.author.max, undefined, "max should not be defined");
       assert.equal(result.analysis.author.min, undefined, "min should not be defined");
@@ -582,8 +582,8 @@ describe('XMLKeyDiscovery based on ROCKER', function () {
       assert.equal(result.analysis.author.skewness, undefined, "skewness should not be defined");
       assert.equal(result.analysis.title.kurtosis, undefined, "kurtosis should not be defined");
       assert.equal(result.analysis.title.skewness, undefined, "skewness should not be defined");
-      assert.equal(result.analysis.id.kurtosis, 0.13641827999069056, "kurtosis is not correct");
-      assert.equal(result.analysis.id.skewness, 1.4141377945955567, "skewness is not correct");
+      assert.equal(result.analysis.id.kurtosis, 0.13641827999069012, "kurtosis is not correct");
+      assert.equal(result.analysis.id.skewness, 1.4141377945955569, "skewness is not correct");
     });
   });
 
