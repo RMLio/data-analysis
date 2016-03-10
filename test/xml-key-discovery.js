@@ -526,7 +526,7 @@ describe('XMLKeyDiscovery based on ROCKER', function () {
       var discovery = new XMLKeyDiscovery(xml);
       var result = discovery.discover(nodePath, {logLevel: 'error', extendedOutput: true});
 
-      console.log(result.analysis);
+      //console.log(result.analysis);
 
       assert.equal(result.analysis.author.max, undefined, "max should not be defined");
       assert.equal(result.analysis.author.min, undefined, "min should not be defined");
