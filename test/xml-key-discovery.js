@@ -49,6 +49,20 @@ describe('XMLKeyDiscovery based on ROCKER', function () {
       ['author', 'id'],
       ['author', 'id', 'title']];
 
+    for (var i = 0; i < result.length; i ++) {
+      result[i] = result[i].sort();
+    }
+
+    result = result.sort();
+
+    for (var i = 0; i < result.length; i ++) {
+      expectedResult[i] = expectedResult[i].sort();
+    }
+
+    expectedResult = expectedResult.sort();
+
+    //console.log(result);
+
     assert.deepEqual(result, expectedResult, "correct keys not found");
   });
 
