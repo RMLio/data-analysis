@@ -3,10 +3,9 @@
  */
 
 var assert = require('chai').assert,
-  discovery = require('../index'),
-  XMLKeyDiscovery = discovery.XMLKeyDiscovery;
+  dataAnalysis = require('../index').Daro;
 
-describe('XMLKeyDiscovery based on ROCKER', function () {
+describe('Daro', function () {
   it('#1', function () {
     var xml = '<?xml version="1.0" encoding="UTF-8"?>' +
       '<bookstore>' +
@@ -39,8 +38,8 @@ describe('XMLKeyDiscovery based on ROCKER', function () {
 
     var nodePath = "/bookstore/book";
 
-    var discovery = new XMLKeyDiscovery(xml);
-    var result = discovery.discover(nodePath, {logLevel: 'error'});
+    var da = new dataAnalysis(xml);
+    var result = da.analyze(nodePath, {logLevel: 'error'});
     var expectedResult = [['title'],
       ['id'],
       ['author'],
@@ -89,8 +88,8 @@ describe('XMLKeyDiscovery based on ROCKER', function () {
 
     var nodePath = "/bookstore/book";
 
-    var discovery = new XMLKeyDiscovery(xml);
-    var result = discovery.discover(nodePath, {logLevel: 'error'});
+    var da = new dataAnalysis(xml);
+    var result = da.analyze(nodePath, {logLevel: 'error'});
     var expectedResult = [['@id'],
       ['title'],
       ['author'],
@@ -127,8 +126,8 @@ describe('XMLKeyDiscovery based on ROCKER', function () {
 
     var nodePath = "/bookstore/book";
 
-    var discovery = new XMLKeyDiscovery(xml);
-    var result = discovery.discover(nodePath, {logLevel: 'error'});
+    var da = new dataAnalysis(xml);
+    var result = da.analyze(nodePath, {logLevel: 'error'});
     var expectedResult = [['title'],
       ['author'],
       ['author', 'title'],
@@ -176,8 +175,8 @@ describe('XMLKeyDiscovery based on ROCKER', function () {
 
     var nodePath = "/bookstore/book";
 
-    var discovery = new XMLKeyDiscovery(xml);
-    var result = discovery.discover(nodePath, {logLevel: 'error'});
+    var da = new dataAnalysis(xml);
+    var result = da.analyze(nodePath, {logLevel: 'error'});
     var expectedResult = [['@id'],
       ['title'],
       ['author'],
@@ -214,8 +213,8 @@ describe('XMLKeyDiscovery based on ROCKER', function () {
 
     var nodePath = "/bookstore/book";
 
-    var discovery = new XMLKeyDiscovery(xml);
-    var result = discovery.discover(nodePath, {logLevel: 'error'});
+    var da = new dataAnalysis(xml);
+    var result = da.analyze(nodePath, {logLevel: 'error'});
     var expectedResult = [['title'],
       ['author'],
       ['author', 'title'],
@@ -262,8 +261,8 @@ describe('XMLKeyDiscovery based on ROCKER', function () {
 
     var nodePath = "/bookstore/book";
 
-    var discovery = new XMLKeyDiscovery(xml);
-    var result = discovery.discover(nodePath, {logLevel: 'error'});
+    var da = new dataAnalysis(xml);
+    var result = da.analyze(nodePath, {logLevel: 'error'});
     var expectedResult = [['title'],
       ['author'],
       ['author', 'title']];
@@ -306,8 +305,8 @@ describe('XMLKeyDiscovery based on ROCKER', function () {
 
     var nodePath = "/bookstore/book";
 
-    var discovery = new XMLKeyDiscovery(xml);
-    var result = discovery.discover(nodePath, {logLevel: 'error'});
+    var da = new dataAnalysis(xml);
+    var result = da.analyze(nodePath, {logLevel: 'error'});
     var expectedResult = [['title'],
       ['author', 'title']];
 
@@ -352,8 +351,8 @@ describe('XMLKeyDiscovery based on ROCKER', function () {
 
     var nodePath = "/bookstore/book";
 
-    var discovery = new XMLKeyDiscovery(xml);
-    var result = discovery.discover(nodePath, {logLevel: 'error'});
+    var da = new dataAnalysis(xml);
+    var result = da.analyze(nodePath, {logLevel: 'error'});
     var expectedResult = [['title'],
       ['author'],
       ['author', 'title']];
@@ -388,8 +387,8 @@ describe('XMLKeyDiscovery based on ROCKER', function () {
 
     var nodePath = "/bookstore/book";
 
-    var discovery = new XMLKeyDiscovery(xml);
-    var result = discovery.discover(nodePath, {logLevel: 'error'});
+    var da = new dataAnalysis(xml);
+    var result = da.analyze(nodePath, {logLevel: 'error'});
     var expectedResult = [['title'],
       ['author', 'title']];
 
@@ -449,8 +448,8 @@ describe('XMLKeyDiscovery based on ROCKER', function () {
 
     var nodePath = "/bookstore/book";
 
-    var discovery = new XMLKeyDiscovery(xml);
-    var result = discovery.discover(nodePath, {logLevel: 'error', multiLevel: false});
+    var da = new dataAnalysis(xml);
+    var result = da.analyze(nodePath, {logLevel: 'error', multiLevel: false});
     var expectedResult = [['title'],
       ['author'],
       ['author', 'title']];
@@ -498,8 +497,8 @@ describe('XMLKeyDiscovery based on ROCKER', function () {
 
     var nodePath = "/bookstore/book";
 
-    var discovery = new XMLKeyDiscovery(xml);
-    var result = discovery.discover(nodePath, {logLevel: 'error', multiLevel: true});
+    var da = new dataAnalysis(xml);
+    var result = da.analyze(nodePath, {logLevel: 'error', multiLevel: true});
     var expectedResult = [['title'],
       ['author'],
       ['details/id'],
@@ -550,8 +549,8 @@ describe('XMLKeyDiscovery based on ROCKER', function () {
 
     var nodePath = "/bookstore/book";
 
-    var discovery = new XMLKeyDiscovery(xml);
-    var result = discovery.discover(nodePath, {logLevel: 'error', multiLevel: true});
+    var da = new dataAnalysis(xml);
+    var result = da.analyze(nodePath, {logLevel: 'error', multiLevel: true});
     var expectedResult = [['title'],
       ['details/id'],
       ['details/id', 'title'],
@@ -609,8 +608,8 @@ describe('XMLKeyDiscovery based on ROCKER', function () {
 
       var nodePath = "/bookstore/book";
 
-      var discovery = new XMLKeyDiscovery(xml);
-      var result = discovery.discover(nodePath, {logLevel: 'error', extendedOutput: true});
+      var da = new dataAnalysis(xml);
+      var result = da.analyze(nodePath, {logLevel: 'error', extendedOutput: true});
 
       //console.log(result.analysis);
 
@@ -659,8 +658,8 @@ describe('XMLKeyDiscovery based on ROCKER', function () {
 
       var nodePath = "/bookstore/book";
 
-      var discovery = new XMLKeyDiscovery(xml);
-      var result = discovery.discover(nodePath, {logLevel: 'error', extendedOutput: true});
+      var da = new dataAnalysis(xml);
+      var result = da.analyze(nodePath, {logLevel: 'error', extendedOutput: true});
 
       //console.log(result.analysis);
 
@@ -706,8 +705,8 @@ describe('XMLKeyDiscovery based on ROCKER', function () {
 
       var nodePath = "/bookstore/book";
 
-      var discovery = new XMLKeyDiscovery(xml);
-      var result = discovery.discover(nodePath, {logLevel: 'error', extendedOutput: true});
+      var da = new dataAnalysis(xml);
+      var result = da.analyze(nodePath, {logLevel: 'error', extendedOutput: true});
 
       //console.log(result.analysis);
 
@@ -753,8 +752,8 @@ describe('XMLKeyDiscovery based on ROCKER', function () {
 
       var nodePath = "/bookstore/book";
 
-      var discovery = new XMLKeyDiscovery(xml);
-      var result = discovery.discover(nodePath, {logLevel: 'error', extendedOutput: true});
+      var da = new dataAnalysis(xml);
+      var result = da.analyze(nodePath, {logLevel: 'error', extendedOutput: true});
       var expectedResult = {
         attributes: [],
         children: [{path: 'author', children: [], attributes: []},
@@ -800,8 +799,8 @@ describe('XMLKeyDiscovery based on ROCKER', function () {
 
       var nodePath = "/bookstore/book";
 
-      var discovery = new XMLKeyDiscovery(xml);
-      var result = discovery.discover(nodePath, {logLevel: 'error', extendedOutput: true});
+      var da = new dataAnalysis(xml);
+      var result = da.analyze(nodePath, {logLevel: 'error', extendedOutput: true});
       var expectedResult = {
         attributes: ['id'],
         children: [{path: 'author', children: [], attributes: []},
@@ -850,8 +849,8 @@ describe('XMLKeyDiscovery based on ROCKER', function () {
 
       var nodePath = "/bookstore/book";
 
-      var discovery = new XMLKeyDiscovery(xml);
-      var result = discovery.discover(nodePath, {logLevel: 'error', extendedOutput: true});
+      var da = new dataAnalysis(xml);
+      var result = da.analyze(nodePath, {logLevel: 'error', extendedOutput: true});
       var expectedResult = {
         attributes: ['id'],
         children: [{path: 'author', children: [], attributes: []},
@@ -903,8 +902,8 @@ describe('XMLKeyDiscovery based on ROCKER', function () {
 
       var nodePath = "/bookstore/book";
 
-      var discovery = new XMLKeyDiscovery(xml);
-      var result = discovery.discover(nodePath, {logLevel: 'error', extendedOutput: true});
+      var da = new dataAnalysis(xml);
+      var result = da.analyze(nodePath, {logLevel: 'error', extendedOutput: true});
       var expectedResult = {
         attributes: ['id'],
         children: [{path: 'author', children: [], attributes: []},
@@ -945,8 +944,8 @@ describe('XMLKeyDiscovery based on ROCKER', function () {
 
       var nodePath = "/bookstore/book";
 
-      var discovery = new XMLKeyDiscovery(xml);
-      var result = discovery.discover(nodePath, {logLevel: 'error', extendedOutput: true});
+      var da = new dataAnalysis(xml);
+      var result = da.analyze(nodePath, {logLevel: 'error', extendedOutput: true});
       var expectedResult = {
         attributes: ['id'],
         children: [{path: 'author', children: [], attributes: []},

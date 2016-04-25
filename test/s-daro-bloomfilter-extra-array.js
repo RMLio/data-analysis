@@ -4,10 +4,11 @@
 
 var assert = require('chai').assert,
   expect = require('chai').expect,
-  discovery = require('../index'),
-  XMLKeyDiscovery = discovery.XMLSinglePassKeyDiscoverySortedArray;
+  dataAnalysis = require('../index').SDaroBloomFilterExtraArray;
+var bits = 32 * 128;
+var hash = 4;
 
-describe('XMLSinglePassKeyDiscovery with Sorted Array', function () {
+describe('SDaro with Bloom Filter and Extra Array', function () {
   it('#1', function () {
     var xml = '<?xml version="1.0" encoding="UTF-8"?>' +
       '<bookstore>' +
@@ -40,8 +41,8 @@ describe('XMLSinglePassKeyDiscovery with Sorted Array', function () {
 
     var nodePath = "/bookstore/book";
 
-    var discovery = new XMLKeyDiscovery(xml);
-    var result = discovery.discover(nodePath, {logLevel: 'error'});
+    var da = new dataAnalysis(xml, bits, hash);
+    var result = da.analyze(nodePath, {logLevel: 'error'});
     var expectedResult =
       [['title'],
         ['id'],
@@ -79,8 +80,8 @@ describe('XMLSinglePassKeyDiscovery with Sorted Array', function () {
 
     var nodePath = "/bookstore/book";
 
-    var discovery = new XMLKeyDiscovery(xml);
-    var result = discovery.discover(nodePath, {logLevel: 'error'});
+    var da = new dataAnalysis(xml, bits, hash);
+    var result = da.analyze(nodePath, {logLevel: 'error'});
     var expectedResult = [['@id'],
       ['title'],
       ['author'],
@@ -117,8 +118,8 @@ describe('XMLSinglePassKeyDiscovery with Sorted Array', function () {
 
     var nodePath = "/bookstore/book";
 
-    var discovery = new XMLKeyDiscovery(xml);
-    var result = discovery.discover(nodePath, {logLevel: 'error'});
+    var da = new dataAnalysis(xml, bits, hash);
+    var result = da.analyze(nodePath, {logLevel: 'error'});
     var expectedResult = [['title'],
       ['author'],
       ['title', '@id'],
@@ -154,8 +155,8 @@ describe('XMLSinglePassKeyDiscovery with Sorted Array', function () {
 
     var nodePath = "/bookstore/book";
 
-    var discovery = new XMLKeyDiscovery(xml);
-    var result = discovery.discover(nodePath, {logLevel: 'error'});
+    var da = new dataAnalysis(xml, bits, hash);
+    var result = da.analyze(nodePath, {logLevel: 'error'});
     var expectedResult = [['@id'],
       ['title'],
       ['author'],
@@ -192,8 +193,8 @@ describe('XMLSinglePassKeyDiscovery with Sorted Array', function () {
 
     var nodePath = "/bookstore/book";
 
-    var discovery = new XMLKeyDiscovery(xml);
-    var result = discovery.discover(nodePath, {logLevel: 'error'});
+    var da = new dataAnalysis(xml, bits, hash);
+    var result = da.analyze(nodePath, {logLevel: 'error'});
     var expectedResult = [['title'],
       ['author'],
       ['title', '@id'],
@@ -228,8 +229,8 @@ describe('XMLSinglePassKeyDiscovery with Sorted Array', function () {
 
     var nodePath = "/bookstore/book";
 
-    var discovery = new XMLKeyDiscovery(xml);
-    var result = discovery.discover(nodePath, {logLevel: 'error'});
+    var da = new dataAnalysis(xml, bits, hash);
+    var result = da.analyze(nodePath, {logLevel: 'error'});
     var expectedResult = [['title'],
       ['author'],
       ['author', 'title']];
@@ -260,8 +261,8 @@ describe('XMLSinglePassKeyDiscovery with Sorted Array', function () {
 
     var nodePath = "/bookstore/book";
 
-    var discovery = new XMLKeyDiscovery(xml);
-    var result = discovery.discover(nodePath, {logLevel: 'error'});
+    var da = new dataAnalysis(xml, bits, hash);
+    var result = da.analyze(nodePath, {logLevel: 'error'});
     var expectedResult = [['title'],
       ['author', 'title']];
 
@@ -294,8 +295,8 @@ describe('XMLSinglePassKeyDiscovery with Sorted Array', function () {
 
     var nodePath = "/bookstore/book";
 
-    var discovery = new XMLKeyDiscovery(xml);
-    var result = discovery.discover(nodePath, {logLevel: 'error'});
+    var da = new dataAnalysis(xml, bits, hash);
+    var result = da.analyze(nodePath, {logLevel: 'error'});
     var expectedResult = [['title'],
       ['author'],
     ['author', 'title']];
@@ -330,8 +331,8 @@ describe('XMLSinglePassKeyDiscovery with Sorted Array', function () {
 
     var nodePath = "/bookstore/book";
 
-    var discovery = new XMLKeyDiscovery(xml);
-    var result = discovery.discover(nodePath, {logLevel: 'error'});
+    var da = new dataAnalysis(xml, bits, hash);
+    var result = da.analyze(nodePath, {logLevel: 'error'});
     var expectedResult = [['title'],
       ['author', 'title']];
 
@@ -347,8 +348,8 @@ describe('XMLSinglePassKeyDiscovery with Sorted Array', function () {
   //
   //  var nodePath = "/nutrition/food";
   //
-  //  var discovery = new XMLKeyDiscovery(xml);
-  //  var result = discovery.discover(nodePath, {logLevel: 'error', multiLevel: false});
+  //  var da = new dataAnalysis(xml, bits, hash);
+  //  var result = da.analyze(nodePath, {logLevel: 'error', multiLevel: false});
   //  var expectedResult;
   //
   //
@@ -365,8 +366,8 @@ describe('XMLSinglePassKeyDiscovery with Sorted Array', function () {
   //
   //  var nodePath = "/nutrition/food";
   //
-  //  var discovery = new XMLKeyDiscovery(xml);
-  //  var result = discovery.discover(nodePath, {logLevel: 'error',multiLevel: false});
+  //  var da = new dataAnalysis(xml, bits, hash);
+  //  var result = da.analyze(nodePath, {logLevel: 'error',multiLevel: false});
   //  var expectedResult = [['saturated-fat'],
   //    ['name'],
   //    ['serving'],
@@ -391,8 +392,8 @@ describe('XMLSinglePassKeyDiscovery with Sorted Array', function () {
   //
   //  var nodePath = "/nutrition/food";
   //
-  //  var discovery = new XMLKeyDiscovery(xml);
-  //  var result = discovery.discover(nodePath, {logLevel: 'error',multiLevel: true});
+  //  var da = new dataAnalysis(xml, bits, hash);
+  //  var result = da.analyze(nodePath, {logLevel: 'error',multiLevel: true});
   //  var expectedResult = [['total-fat'],
   //    ['name'],
   //    ['fiber'],
@@ -464,8 +465,8 @@ describe('XMLSinglePassKeyDiscovery with Sorted Array', function () {
 
     var nodePath = "/bookstore/book";
 
-    var discovery = new XMLKeyDiscovery(xml);
-    var result = discovery.discover(nodePath, {logLevel: 'error',multiLevel: true});
+    var da = new dataAnalysis(xml, bits, hash);
+    var result = da.analyze(nodePath, {logLevel: 'error',multiLevel: true});
     var expectedResult = [ [ 'title' ],
       [ 'author' ],
       [ 'details/id' ],
@@ -529,8 +530,8 @@ describe('XMLSinglePassKeyDiscovery with Sorted Array', function () {
 
     var nodePath = "/bookstore/book";
 
-    var discovery = new XMLKeyDiscovery(xml);
-    var result = discovery.discover(nodePath, {logLevel: 'error', multiLevel: true});
+    var da = new dataAnalysis(xml, bits, hash);
+    var result = da.analyze(nodePath, {logLevel: 'error', multiLevel: true});
     var expectedResult = [['title'],
       ['details/id'],
       ['details/id', 'title'],

@@ -4,10 +4,9 @@
 
 var assert = require('chai').assert,
   expect = require('chai').expect,
-  discovery = require('../index'),
-  XMLKeyDiscovery = discovery.XMLSinglePassKeyDiscoveryAVL;
+  dataAnalysis = require('../index').SDaroAVL;
 
-describe('XMLSinglePassKeyDiscovery with AVL', function () {
+describe('S-Darowith AVL', function () {
   describe('keys', function () {
     it('#1', function () {
       var xml = '<?xml version="1.0" encoding="UTF-8"?>' +
@@ -41,8 +40,8 @@ describe('XMLSinglePassKeyDiscovery with AVL', function () {
 
       var nodePath = "/bookstore/book";
 
-      var discovery = new XMLKeyDiscovery(xml);
-      var result = discovery.discover(nodePath, {logLevel: 'error'});
+      var da = new dataAnalysis(xml);
+      var result = da.analyze(nodePath, {logLevel: 'error'});
       var expectedResult =
         [['title'],
           ['id'],
@@ -80,8 +79,8 @@ describe('XMLSinglePassKeyDiscovery with AVL', function () {
 
       var nodePath = "/bookstore/book";
 
-      var discovery = new XMLKeyDiscovery(xml);
-      var result = discovery.discover(nodePath, {logLevel: 'error'});
+      var da = new dataAnalysis(xml);
+      var result = da.analyze(nodePath, {logLevel: 'error'});
       var expectedResult = [['@id'],
         ['title'],
         ['author'],
@@ -118,8 +117,8 @@ describe('XMLSinglePassKeyDiscovery with AVL', function () {
 
       var nodePath = "/bookstore/book";
 
-      var discovery = new XMLKeyDiscovery(xml);
-      var result = discovery.discover(nodePath, {logLevel: 'error'});
+      var da = new dataAnalysis(xml);
+      var result = da.analyze(nodePath, {logLevel: 'error'});
       var expectedResult = [['title'],
         ['author'],
         ['title', '@id'],
@@ -155,8 +154,8 @@ describe('XMLSinglePassKeyDiscovery with AVL', function () {
 
       var nodePath = "/bookstore/book";
 
-      var discovery = new XMLKeyDiscovery(xml);
-      var result = discovery.discover(nodePath, {logLevel: 'error'});
+      var da = new dataAnalysis(xml);
+      var result = da.analyze(nodePath, {logLevel: 'error'});
       var expectedResult = [['@id'],
         ['title'],
         ['author'],
@@ -193,8 +192,8 @@ describe('XMLSinglePassKeyDiscovery with AVL', function () {
 
       var nodePath = "/bookstore/book";
 
-      var discovery = new XMLKeyDiscovery(xml);
-      var result = discovery.discover(nodePath, {logLevel: 'error'});
+      var da = new dataAnalysis(xml);
+      var result = da.analyze(nodePath, {logLevel: 'error'});
       var expectedResult = [['title'],
         ['author'],
         ['title', '@id'],
@@ -229,8 +228,8 @@ describe('XMLSinglePassKeyDiscovery with AVL', function () {
 
       var nodePath = "/bookstore/book";
 
-      var discovery = new XMLKeyDiscovery(xml);
-      var result = discovery.discover(nodePath, {logLevel: 'error'});
+      var da = new dataAnalysis(xml);
+      var result = da.analyze(nodePath, {logLevel: 'error'});
       var expectedResult = [['title'],
         ['author'],
         ['author', 'title']];
@@ -261,8 +260,8 @@ describe('XMLSinglePassKeyDiscovery with AVL', function () {
 
       var nodePath = "/bookstore/book";
 
-      var discovery = new XMLKeyDiscovery(xml);
-      var result = discovery.discover(nodePath, {logLevel: 'error'});
+      var da = new dataAnalysis(xml);
+      var result = da.analyze(nodePath, {logLevel: 'error'});
       var expectedResult = [['title'],
         ['author', 'title']];
 
@@ -295,8 +294,8 @@ describe('XMLSinglePassKeyDiscovery with AVL', function () {
 
       var nodePath = "/bookstore/book";
 
-      var discovery = new XMLKeyDiscovery(xml);
-      var result = discovery.discover(nodePath, {logLevel: 'error'});
+      var da = new dataAnalysis(xml);
+      var result = da.analyze(nodePath, {logLevel: 'error'});
       var expectedResult = [['title'],
         ['author'],
         ['author', 'title']];
@@ -331,8 +330,8 @@ describe('XMLSinglePassKeyDiscovery with AVL', function () {
 
       var nodePath = "/bookstore/book";
 
-      var discovery = new XMLKeyDiscovery(xml);
-      var result = discovery.discover(nodePath, {logLevel: 'error'});
+      var da = new dataAnalysis(xml);
+      var result = da.analyze(nodePath, {logLevel: 'error'});
       var expectedResult = [['title'],
         ['author', 'title']];
 
@@ -348,8 +347,8 @@ describe('XMLSinglePassKeyDiscovery with AVL', function () {
     //
     //  var nodePath = "/nutrition/food";
     //
-    //  var discovery = new XMLKeyDiscovery(xml);
-    //  var result = discovery.discover(nodePath, {logLevel: 'error', multiLevel: false});
+    //  var da = new dataAnalysis(xml);
+    //  var result = da.analyze(nodePath, {logLevel: 'error', multiLevel: false});
     //  var expectedResult;
     //
     //
@@ -366,8 +365,8 @@ describe('XMLSinglePassKeyDiscovery with AVL', function () {
     //
     //  var nodePath = "/nutrition/food";
     //
-    //  var discovery = new XMLKeyDiscovery(xml);
-    //  var result = discovery.discover(nodePath, {logLevel: 'error',multiLevel: false});
+    //  var da = new dataAnalysis(xml);
+    //  var result = da.analyze(nodePath, {logLevel: 'error',multiLevel: false});
     //  var expectedResult = [['saturated-fat'],
     //    ['name'],
     //    ['serving'],
@@ -392,8 +391,8 @@ describe('XMLSinglePassKeyDiscovery with AVL', function () {
     //
     //  var nodePath = "/nutrition/food";
     //
-    //  var discovery = new XMLKeyDiscovery(xml);
-    //  var result = discovery.discover(nodePath, {logLevel: 'error',multiLevel: true});
+    //  var da = new dataAnalysis(xml);
+    //  var result = da.analyze(nodePath, {logLevel: 'error',multiLevel: true});
     //  var expectedResult = [['total-fat'],
     //    ['name'],
     //    ['fiber'],
@@ -465,8 +464,8 @@ describe('XMLSinglePassKeyDiscovery with AVL', function () {
 
       var nodePath = "/bookstore/book";
 
-      var discovery = new XMLKeyDiscovery(xml);
-      var result = discovery.discover(nodePath, {logLevel: 'error', multiLevel: true});
+      var da = new dataAnalysis(xml);
+      var result = da.analyze(nodePath, {logLevel: 'error', multiLevel: true});
       var expectedResult = [['title'],
         ['author'],
         ['details/id'],
@@ -530,8 +529,8 @@ describe('XMLSinglePassKeyDiscovery with AVL', function () {
 
       var nodePath = "/bookstore/book";
 
-      var discovery = new XMLKeyDiscovery(xml);
-      var result = discovery.discover(nodePath, {logLevel: 'error', multiLevel: true});
+      var da = new dataAnalysis(xml);
+      var result = da.analyze(nodePath, {logLevel: 'error', multiLevel: true});
       var expectedResult = [['title'],
         ['details/id'],
         ['details/id', 'title'],
@@ -590,8 +589,8 @@ describe('XMLSinglePassKeyDiscovery with AVL', function () {
 
       var nodePath = "/bookstore/book";
 
-      var discovery = new XMLKeyDiscovery(xml);
-      var result = discovery.discover(nodePath, {logLevel: 'error', extendedOutput: true});
+      var da = new dataAnalysis(xml);
+      var result = da.analyze(nodePath, {logLevel: 'error', extendedOutput: true});
       var expectedResult = {
         author: {types: {'0': 0, '1': 5, '3': 0, '4': 0, '6': 0}},
         id: {types: {'0': 0, '1': 0, '3': 0, '4': 0, '6': 5}},
@@ -637,8 +636,8 @@ describe('XMLSinglePassKeyDiscovery with AVL', function () {
 
       var nodePath = "/bookstore/book";
 
-      var discovery = new XMLKeyDiscovery(xml);
-      var result = discovery.discover(nodePath, {logLevel: 'error', extendedOutput: true});
+      var da = new dataAnalysis(xml);
+      var result = da.analyze(nodePath, {logLevel: 'error', extendedOutput: true});
 
       //console.log(result.analysis);
 
@@ -687,8 +686,8 @@ describe('XMLSinglePassKeyDiscovery with AVL', function () {
 
       var nodePath = "/bookstore/book";
 
-      var discovery = new XMLKeyDiscovery(xml);
-      var result = discovery.discover(nodePath, {logLevel: 'error', extendedOutput: true});
+      var da = new dataAnalysis(xml);
+      var result = da.analyze(nodePath, {logLevel: 'error', extendedOutput: true});
 
       //console.log(result.analysis);
 
@@ -734,8 +733,8 @@ describe('XMLSinglePassKeyDiscovery with AVL', function () {
 
       var nodePath = "/bookstore/book";
 
-      var discovery = new XMLKeyDiscovery(xml);
-      var result = discovery.discover(nodePath, {logLevel: 'error', extendedOutput: true});
+      var da = new dataAnalysis(xml);
+      var result = da.analyze(nodePath, {logLevel: 'error', extendedOutput: true});
 
       //console.log(result.analysis);
 
@@ -781,8 +780,8 @@ describe('XMLSinglePassKeyDiscovery with AVL', function () {
 
       var nodePath = "/bookstore/book";
 
-      var discovery = new XMLKeyDiscovery(xml);
-      var result = discovery.discover(nodePath, {logLevel: 'error', extendedOutput: true});
+      var da = new dataAnalysis(xml);
+      var result = da.analyze(nodePath, {logLevel: 'error', extendedOutput: true});
       var expectedResult = {
         attributes: [],
         children: [{path: 'author', children: [], attributes: []},
@@ -828,8 +827,8 @@ describe('XMLSinglePassKeyDiscovery with AVL', function () {
 
       var nodePath = "/bookstore/book";
 
-      var discovery = new XMLKeyDiscovery(xml);
-      var result = discovery.discover(nodePath, {logLevel: 'error', extendedOutput: true});
+      var da = new dataAnalysis(xml);
+      var result = da.analyze(nodePath, {logLevel: 'error', extendedOutput: true});
       var expectedResult = {
         attributes: ['id'],
         children: [{path: 'author', children: [], attributes: []},
@@ -878,8 +877,8 @@ describe('XMLSinglePassKeyDiscovery with AVL', function () {
 
       var nodePath = "/bookstore/book";
 
-      var discovery = new XMLKeyDiscovery(xml);
-      var result = discovery.discover(nodePath, {logLevel: 'error', extendedOutput: true});
+      var da = new dataAnalysis(xml);
+      var result = da.analyze(nodePath, {logLevel: 'error', extendedOutput: true});
       var expectedResult = {
         attributes: ['id'],
         children: [{path: 'author', children: [], attributes: []},
@@ -931,8 +930,8 @@ describe('XMLSinglePassKeyDiscovery with AVL', function () {
 
       var nodePath = "/bookstore/book";
 
-      var discovery = new XMLKeyDiscovery(xml);
-      var result = discovery.discover(nodePath, {logLevel: 'error', extendedOutput: true});
+      var da = new dataAnalysis(xml);
+      var result = da.analyze(nodePath, {logLevel: 'error', extendedOutput: true});
       var expectedResult = {
         attributes: ['id'],
         children: [{path: 'author', children: [], attributes: []},
@@ -973,8 +972,8 @@ describe('XMLSinglePassKeyDiscovery with AVL', function () {
 
       var nodePath = "/bookstore/book";
 
-      var discovery = new XMLKeyDiscovery(xml);
-      var result = discovery.discover(nodePath, {logLevel: 'error', extendedOutput: true});
+      var da = new dataAnalysis(xml);
+      var result = da.analyze(nodePath, {logLevel: 'error', extendedOutput: true});
       var expectedResult = {
         attributes: ['id'],
         children: [{path: 'author', children: [], attributes: []},
