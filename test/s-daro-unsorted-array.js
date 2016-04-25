@@ -41,7 +41,7 @@ describe('SDaro with Unsorted Array', function () {
       var nodePath = "/bookstore/book";
 
       var da = new dataAnalysis(xml);
-      var result = da.analyze(nodePath, {logLevel: 'error'});
+      var result = da.analyze(nodePath, {logLevel: 'error'}).keys;
       var expectedResult =
         [['title'],
           ['id'],
@@ -80,7 +80,7 @@ describe('SDaro with Unsorted Array', function () {
       var nodePath = "/bookstore/book";
 
       var da = new dataAnalysis(xml);
-      var result = da.analyze(nodePath, {logLevel: 'error'});
+      var result = da.analyze(nodePath, {logLevel: 'error'}).keys;
       var expectedResult = [['@id'],
         ['title'],
         ['author'],
@@ -118,7 +118,7 @@ describe('SDaro with Unsorted Array', function () {
       var nodePath = "/bookstore/book";
 
       var da = new dataAnalysis(xml);
-      var result = da.analyze(nodePath, {logLevel: 'error'});
+      var result = da.analyze(nodePath, {logLevel: 'error'}).keys;
       var expectedResult = [['title'],
         ['author'],
         ['title', '@id'],
@@ -155,7 +155,7 @@ describe('SDaro with Unsorted Array', function () {
       var nodePath = "/bookstore/book";
 
       var da = new dataAnalysis(xml);
-      var result = da.analyze(nodePath, {logLevel: 'error'});
+      var result = da.analyze(nodePath, {logLevel: 'error'}).keys;
       var expectedResult = [['@id'],
         ['title'],
         ['author'],
@@ -193,7 +193,7 @@ describe('SDaro with Unsorted Array', function () {
       var nodePath = "/bookstore/book";
 
       var da = new dataAnalysis(xml);
-      var result = da.analyze(nodePath, {logLevel: 'error'});
+      var result = da.analyze(nodePath, {logLevel: 'error'}).keys;
       var expectedResult = [['title'],
         ['author'],
         ['title', '@id'],
@@ -229,7 +229,7 @@ describe('SDaro with Unsorted Array', function () {
       var nodePath = "/bookstore/book";
 
       var da = new dataAnalysis(xml);
-      var result = da.analyze(nodePath, {logLevel: 'error'});
+      var result = da.analyze(nodePath, {logLevel: 'error'}).keys;
       var expectedResult = [['title'],
         ['author'],
         ['author', 'title']];
@@ -261,7 +261,7 @@ describe('SDaro with Unsorted Array', function () {
       var nodePath = "/bookstore/book";
 
       var da = new dataAnalysis(xml);
-      var result = da.analyze(nodePath, {logLevel: 'error'});
+      var result = da.analyze(nodePath, {logLevel: 'error'}).keys;
       var expectedResult = [['title'],
         ['author', 'title']];
 
@@ -295,7 +295,7 @@ describe('SDaro with Unsorted Array', function () {
       var nodePath = "/bookstore/book";
 
       var da = new dataAnalysis(xml);
-      var result = da.analyze(nodePath, {logLevel: 'error'});
+      var result = da.analyze(nodePath, {logLevel: 'error'}).keys;
       var expectedResult = [['title'],
         ['author'],
         ['author', 'title']];
@@ -331,7 +331,7 @@ describe('SDaro with Unsorted Array', function () {
       var nodePath = "/bookstore/book";
 
       var da = new dataAnalysis(xml);
-      var result = da.analyze(nodePath, {logLevel: 'error'});
+      var result = da.analyze(nodePath, {logLevel: 'error'}).keys;
       var expectedResult = [['title'],
         ['author', 'title']];
 
@@ -465,7 +465,7 @@ describe('SDaro with Unsorted Array', function () {
       var nodePath = "/bookstore/book";
 
       var da = new dataAnalysis(xml);
-      var result = da.analyze(nodePath, {logLevel: 'error', multiLevel: true});
+      var result = da.analyze(nodePath, {logLevel: 'error', multiLevel: true}).keys;
       var expectedResult = [['title'],
         ['author'],
         ['details/id'],
@@ -530,7 +530,7 @@ describe('SDaro with Unsorted Array', function () {
       var nodePath = "/bookstore/book";
 
       var da = new dataAnalysis(xml);
-      var result = da.analyze(nodePath, {logLevel: 'error', multiLevel: true});
+      var result = da.analyze(nodePath, {logLevel: 'error', multiLevel: true}).keys;
       var expectedResult = [['title'],
         ['details/id'],
         ['details/id', 'title'],
@@ -591,6 +591,51 @@ describe('SDaro with Unsorted Array', function () {
 
       var da = new dataAnalysis(xml);
       var result = da.analyze(nodePath, {logLevel: 'error', extendedOutput: true});
+      var expectedResult = {
+        author: {types: {'0': 0, '1': 5, '3': 0, '4': 0, '6': 0}},
+        id: {types: {'0': 0, '1': 0, '3': 0, '4': 0, '6': 5}},
+        title: {types: {'0': 0, '1': 5, '3': 0, '4': 0, '6': 0}}
+      };
+
+      assert.deepEqual(result.analysis.author.types, expectedResult.author.types, "correct datatypes not found");
+      assert.deepEqual(result.analysis.id.types, expectedResult.id.types, "correct datatypes not found");
+      assert.deepEqual(result.analysis.title.types, expectedResult.title.types, "correct datatypes not found");
+    });
+
+    it('#2', function () {
+      var xml = '<?xml version="1.0" encoding="UTF-8"?>' +
+        '<bookstore>' +
+        '<book>' +
+        '<title>Everyday Italian</title>' +
+        '<id>0</id>' +
+        '<author>Giada De Laurentiis</author>' +
+        '</book>' +
+        '<book>' +
+        '<title>Everyday Italian2</title>' +
+        '<id>1</id>' +
+        '<author>Giada</author>' +
+        '</book>' +
+        '<book>' +
+        '<title>Harry Potter</title>' +
+        '<id>2</id>' +
+        '<author>J K. Rowling</author>' +
+        '</book>' +
+        '<book>' +
+        '<title>XQuery Kick Start</title>' +
+        '<id>3</id>' +
+        '<author>James McGovern</author>' +
+        '</book>' +
+        '<book>' +
+        '<title>Learning XML</title>' +
+        '<id>4</id>' +
+        '<author>Erik T. Ray</author>' +
+        '</book>' +
+        '</bookstore>';
+
+      var nodePath = "/bookstore/book";
+
+      var da = new dataAnalysis(xml);
+      var result = da.analyze(nodePath, {logLevel: 'error', features: "datatypes"});
       var expectedResult = {
         author: {types: {'0': 0, '1': 5, '3': 0, '4': 0, '6': 0}},
         id: {types: {'0': 0, '1': 0, '3': 0, '4': 0, '6': 5}},

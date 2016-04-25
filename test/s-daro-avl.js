@@ -41,7 +41,7 @@ describe('S-Darowith AVL', function () {
       var nodePath = "/bookstore/book";
 
       var da = new dataAnalysis(xml);
-      var result = da.analyze(nodePath, {logLevel: 'error'});
+      var result = da.analyze(nodePath, {logLevel: 'error'}).keys;
       var expectedResult =
         [['title'],
           ['id'],
@@ -80,7 +80,7 @@ describe('S-Darowith AVL', function () {
       var nodePath = "/bookstore/book";
 
       var da = new dataAnalysis(xml);
-      var result = da.analyze(nodePath, {logLevel: 'error'});
+      var result = da.analyze(nodePath, {logLevel: 'error'}).keys;
       var expectedResult = [['@id'],
         ['title'],
         ['author'],
@@ -118,7 +118,7 @@ describe('S-Darowith AVL', function () {
       var nodePath = "/bookstore/book";
 
       var da = new dataAnalysis(xml);
-      var result = da.analyze(nodePath, {logLevel: 'error'});
+      var result = da.analyze(nodePath, {logLevel: 'error'}).keys;
       var expectedResult = [['title'],
         ['author'],
         ['title', '@id'],
@@ -155,7 +155,7 @@ describe('S-Darowith AVL', function () {
       var nodePath = "/bookstore/book";
 
       var da = new dataAnalysis(xml);
-      var result = da.analyze(nodePath, {logLevel: 'error'});
+      var result = da.analyze(nodePath, {logLevel: 'error'}).keys;
       var expectedResult = [['@id'],
         ['title'],
         ['author'],
@@ -193,7 +193,7 @@ describe('S-Darowith AVL', function () {
       var nodePath = "/bookstore/book";
 
       var da = new dataAnalysis(xml);
-      var result = da.analyze(nodePath, {logLevel: 'error'});
+      var result = da.analyze(nodePath, {logLevel: 'error'}).keys;
       var expectedResult = [['title'],
         ['author'],
         ['title', '@id'],
@@ -229,7 +229,7 @@ describe('S-Darowith AVL', function () {
       var nodePath = "/bookstore/book";
 
       var da = new dataAnalysis(xml);
-      var result = da.analyze(nodePath, {logLevel: 'error'});
+      var result = da.analyze(nodePath, {logLevel: 'error'}).keys;
       var expectedResult = [['title'],
         ['author'],
         ['author', 'title']];
@@ -261,7 +261,7 @@ describe('S-Darowith AVL', function () {
       var nodePath = "/bookstore/book";
 
       var da = new dataAnalysis(xml);
-      var result = da.analyze(nodePath, {logLevel: 'error'});
+      var result = da.analyze(nodePath, {logLevel: 'error'}).keys;
       var expectedResult = [['title'],
         ['author', 'title']];
 
@@ -295,7 +295,7 @@ describe('S-Darowith AVL', function () {
       var nodePath = "/bookstore/book";
 
       var da = new dataAnalysis(xml);
-      var result = da.analyze(nodePath, {logLevel: 'error'});
+      var result = da.analyze(nodePath, {logLevel: 'error'}).keys;
       var expectedResult = [['title'],
         ['author'],
         ['author', 'title']];
@@ -331,7 +331,7 @@ describe('S-Darowith AVL', function () {
       var nodePath = "/bookstore/book";
 
       var da = new dataAnalysis(xml);
-      var result = da.analyze(nodePath, {logLevel: 'error'});
+      var result = da.analyze(nodePath, {logLevel: 'error'}).keys;
       var expectedResult = [['title'],
         ['author', 'title']];
 
@@ -465,7 +465,7 @@ describe('S-Darowith AVL', function () {
       var nodePath = "/bookstore/book";
 
       var da = new dataAnalysis(xml);
-      var result = da.analyze(nodePath, {logLevel: 'error', multiLevel: true});
+      var result = da.analyze(nodePath, {logLevel: 'error', multiLevel: true}).keys;
       var expectedResult = [['title'],
         ['author'],
         ['details/id'],
@@ -530,7 +530,7 @@ describe('S-Darowith AVL', function () {
       var nodePath = "/bookstore/book";
 
       var da = new dataAnalysis(xml);
-      var result = da.analyze(nodePath, {logLevel: 'error', multiLevel: true});
+      var result = da.analyze(nodePath, {logLevel: 'error', multiLevel: true}).keys;
       var expectedResult = [['title'],
         ['details/id'],
         ['details/id', 'title'],

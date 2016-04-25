@@ -42,7 +42,7 @@ describe('SDaro with Bloom Filter', function () {
     var nodePath = "/bookstore/book";
 
     var da = new dataAnalysis(xml, bits, hash);
-    var result = da.analyze(nodePath, {logLevel: 'error'});
+    var result = da.analyze(nodePath, {logLevel: 'error'}).keys;
     var expectedResult =
       [['title'],
         ['id'],
@@ -81,7 +81,7 @@ describe('SDaro with Bloom Filter', function () {
     var nodePath = "/bookstore/book";
 
     var da = new dataAnalysis(xml, bits, hash);
-    var result = da.analyze(nodePath, {logLevel: 'error'});
+    var result = da.analyze(nodePath, {logLevel: 'error'}).keys;
     var expectedResult = [['@id'],
       ['title'],
       ['author'],
@@ -119,7 +119,7 @@ describe('SDaro with Bloom Filter', function () {
     var nodePath = "/bookstore/book";
 
     var da = new dataAnalysis(xml, bits, hash);
-    var result = da.analyze(nodePath, {logLevel: 'error'});
+    var result = da.analyze(nodePath, {logLevel: 'error'}).keys;
     var expectedResult = [['title'],
       ['author'],
       ['title', '@id'],
@@ -156,7 +156,7 @@ describe('SDaro with Bloom Filter', function () {
     var nodePath = "/bookstore/book";
 
     var da = new dataAnalysis(xml, bits, hash);
-    var result = da.analyze(nodePath, {logLevel: 'error'});
+    var result = da.analyze(nodePath, {logLevel: 'error'}).keys;
     var expectedResult = [['@id'],
       ['title'],
       ['author'],
@@ -194,7 +194,7 @@ describe('SDaro with Bloom Filter', function () {
     var nodePath = "/bookstore/book";
 
     var da = new dataAnalysis(xml, bits, hash);
-    var result = da.analyze(nodePath, {logLevel: 'error'});
+    var result = da.analyze(nodePath, {logLevel: 'error'}).keys;
     var expectedResult = [['title'],
       ['author'],
       ['title', '@id'],
@@ -230,7 +230,7 @@ describe('SDaro with Bloom Filter', function () {
     var nodePath = "/bookstore/book";
 
     var da = new dataAnalysis(xml, bits, hash);
-    var result = da.analyze(nodePath, {logLevel: 'error'});
+    var result = da.analyze(nodePath, {logLevel: 'error'}).keys;
     var expectedResult = [['title'],
       ['author'],
       ['author', 'title']];
@@ -262,7 +262,7 @@ describe('SDaro with Bloom Filter', function () {
     var nodePath = "/bookstore/book";
 
     var da = new dataAnalysis(xml, bits, hash);
-    var result = da.analyze(nodePath, {logLevel: 'error'});
+    var result = da.analyze(nodePath, {logLevel: 'error'}).keys;
     var expectedResult = [['title'],
       ['author', 'title']];
 
@@ -296,7 +296,7 @@ describe('SDaro with Bloom Filter', function () {
     var nodePath = "/bookstore/book";
 
     var da = new dataAnalysis(xml, bits, hash);
-    var result = da.analyze(nodePath, {logLevel: 'error'});
+    var result = da.analyze(nodePath, {logLevel: 'error'}).keys;
     var expectedResult = [['title'],
       ['author'],
     ['author', 'title']];
@@ -332,7 +332,7 @@ describe('SDaro with Bloom Filter', function () {
     var nodePath = "/bookstore/book";
 
     var da = new dataAnalysis(xml, bits, hash);
-    var result = da.analyze(nodePath, {logLevel: 'error'});
+    var result = da.analyze(nodePath, {logLevel: 'error'}).keys;
     var expectedResult = [['title'],
       ['author', 'title']];
 
@@ -466,7 +466,7 @@ describe('SDaro with Bloom Filter', function () {
     var nodePath = "/bookstore/book";
 
     var da = new dataAnalysis(xml, bits, hash);
-    var result = da.analyze(nodePath, {logLevel: 'error',multiLevel: true});
+    var result = da.analyze(nodePath, {logLevel: 'error',multiLevel: true}).keys;
     var expectedResult = [ [ 'title' ],
       [ 'author' ],
       [ 'details/id' ],
@@ -531,7 +531,7 @@ describe('SDaro with Bloom Filter', function () {
     var nodePath = "/bookstore/book";
 
     var da = new dataAnalysis(xml, bits, hash);
-    var result = da.analyze(nodePath, {logLevel: 'error', multiLevel: true});
+    var result = da.analyze(nodePath, {logLevel: 'error', multiLevel: true}).keys;
     var expectedResult = [['title'],
       ['details/id'],
       ['details/id', 'title'],
