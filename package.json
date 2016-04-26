@@ -1,7 +1,7 @@
 {
-  "name": "key-discovery",
+  "name": "data-analysis",
   "version": "0.0.1",
-  "description": "Key discovery for data",
+  "description": "Data analysis",
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/.bin/mocha --reporter spec"
