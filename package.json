@@ -8,11 +8,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@git.mmlab.be:pheyvaer/key-discovery.git"
+    "url": "git@github.com:RMLio/data-analysis.git"
   },
   "author": "Pieter Heyvaert",
   "dependencies": {
-    "binary-search-tree": "git+ssh://git@git.mmlab.be:pheyvaer/node-binary-search-tree",
+    "binary-search-tree": "git+ssh://git@github.com:RMLio/node-binary-search-tree.git",
     "bloomfilter": "0.0.16",
     "priorityqueuejs": "^1.0.0",
     "sorted-array": "^2.0.1",
